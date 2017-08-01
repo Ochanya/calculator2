@@ -6,16 +6,20 @@ let clear = document.querySelector('.clear');
 
 let operator = document.querySelectorAll('.operator');
 
+let equal = document.querySelector('.equal');
 
 
+let a;
+let b;
 
 
 number.forEach(function(number){
   number.addEventListener("click", function(){
 
-    if(calculation.innerHTML.length<=13){
-    // calculation.innerHTML="" ;
+    if( calculation.innerHTML.length<=13){
+
     calculation.innerHTML+= number.value;
+    calculation.value+=number.value;
     }
   });
 })
@@ -26,18 +30,36 @@ clear.addEventListener("click", function(){
 
 operator.forEach(function(operator){
   operator.addEventListener("click", function(){
-    let a = Number(calculation.innerHTML);
+    a = Number(calculation.innerHTML);
     console.log(a);
-    let b = operator.innerHTML;
-    calculation.innerHTML ="";
+     b = operator.innerHTML;
+       calculation.innerHTML+= operator.innerHTML;
+     calculation.value ="";
     console.log(a + b);
     console.log(b);
+    return a;
+    return b;
 
-    // if(calculation.innerHTML.length<=13){
-    // // calculation.innerHTML="" ;
-    // calculation.innerHTML+= operator.innerHTML;
-    // }
   });
 })
 
-// number.addEventListener("click", display);
+equal.addEventListener("click", function(){
+  let c = Number(calculation.value);
+  console.log(c);
+  console.log(b);
+  console.log(a);
+  if (b==="+"){
+    calculation.innerHTML= a+c;
+    console.log(calculation.innerHTML)
+  }else if (b==="-"){
+    calculation.innerHTML=a-c;
+    console.log(calculation.innerHTML)
+  }else if (b==="/"){
+    calculation.innerHTML=a/c;
+    console.log(calculation.innerHTML)
+  }else if (b==="*"){
+    calculation.innerHTML=a*c;
+    console.log(calculation.innerHTML)
+  }
+
+})
